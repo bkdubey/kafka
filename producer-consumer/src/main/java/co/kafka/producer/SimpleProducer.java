@@ -22,7 +22,7 @@ public class SimpleProducer
         {
             try
             {
-                ProducerRecord<String, String> record = new ProducerRecord<>("kafka_topic", "my-key" + i, "my message from java " + i);
+                ProducerRecord<String, String> record = new ProducerRecord<>("kafka_topic3p3r", "mykey" + i, "my message from java " + i);
                 producer.send(record);
             }
             catch(Exception e)

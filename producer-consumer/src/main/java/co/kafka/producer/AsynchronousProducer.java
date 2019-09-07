@@ -10,7 +10,7 @@ public class AsynchronousProducer
 {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.56.101:9101");
+        props.put("bootstrap.servers", "192.168.1.10:9101");
         props.put("acks", "1");  //"0" -No ack, "1" only Leader ,"all" ALL
         props.put("retries", 0);  // "0" doesn't re try ; positive value will retry
 
@@ -24,7 +24,7 @@ public class AsynchronousProducer
         Producer<String, String> producer = new KafkaProducer<>(props);
         for(int i = 0; i < 10; i++)
         {
-            ProducerRecord<String, String> record = new ProducerRecord<>("my-first-topic", "my-key" + i, "from async producer" + i);
+            ProducerRecord<String, String> record = new ProducerRecord<>("kafka_topic3p3r", "my-key" + i, "from async producer" + i);
             producer.send(record, new  ProducerCallBack());
         }
         System.out.println("message published");

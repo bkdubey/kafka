@@ -1,5 +1,6 @@
 package co.kafka.consumer;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -19,9 +20,12 @@ public class SimpleConsumer
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 
-        consumer.subscribe(Arrays.asList("kafka_topic"));
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+        String topic_name="kafka_topic3p3r";
+        consumer.subscribe(Arrays.asList(topic_name));
+        System.out.println("reading from topic "+topic_name);
+
         while (true)
         {
             ConsumerRecords<String, String> records = consumer.poll(1000);
